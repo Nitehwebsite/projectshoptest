@@ -5,7 +5,7 @@ function ShopHeader({ cartCount, currentPage, onOpenCart, onOpenShop }) {
     <header className="shop-header">
       <div className="shop-header-inner">
         <button className="shop-brand" type="button" onClick={onOpenShop} aria-label="NitehTestShop home">
-          <img className="shop-brand-mark" src="/nitehtestshop-mark.svg" alt="" />
+          <img className="shop-brand-mark" src={`${import.meta.env.BASE_URL}nitehtestshop-mark.svg`} alt="" />
           <span className="shop-brand-name">NitehTestShop<span>EVERYDAY ELECTRONICS</span></span>
         </button>
 

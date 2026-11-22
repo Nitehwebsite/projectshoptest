@@ -18,7 +18,7 @@ function OrderSummary({ items, subtotal, shipping, children, note }) {
       <ul className="shop-summary-items">
         {items.map(item => (
           <li key={item.id} className="shop-summary-item">
-            <img className={`shop-summary-image art-${item.color}`} src={`/products/${item.id}.png`} alt="" />
+            <img className={`shop-summary-image art-${item.color}`} src={`${import.meta.env.BASE_URL}products/${item.id}.png`} alt="" />
             <span className="shop-summary-item-name">{item.name}<small>Qty {item.quantity}</small></span>
             <span className="shop-summary-item-price">{formatPrice(item.price * item.quantity)}</span>
           </li>

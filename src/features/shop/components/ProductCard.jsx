@@ -5,7 +5,7 @@ function ProductCard({ product, onAdd }) {
     <article className="shop-product-card">
       <div className={`shop-product-art art-${product.color}`}>
         <span className="shop-product-index">N° {String(product.id === 'laptop' ? 1 : product.id === 'mouse' ? 2 : product.id === 'keyboard' ? 3 : 4).padStart(2, '0')}</span>
-        <img className="shop-product-image" src={`/products/${product.id}.png`} alt={product.name} />
+        <img className="shop-product-image" src={`${import.meta.env.BASE_URL}products/${product.id}.png`} alt={product.name} />
       </div>
       <div className="shop-product-info">
         <div className="shop-product-copy">

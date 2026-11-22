@@ -174,7 +174,7 @@ function ShopApp() {
       </main>
       <footer className="shop-footer">
         <span className="shop-footer-brand">
-          <img className="shop-footer-mark" src="/nitehtestshop-mark.svg" alt="" />
+          <img className="shop-footer-mark" src={`${import.meta.env.BASE_URL}nitehtestshop-mark.svg`} alt="" />
           <span className="shop-footer-brand-copy">NitehTestShop<span className="shop-footer-goods">EVERYDAY ELECTRONICS</span></span>
         </span>
         <span>Made for everyday, chosen to last.</span>
@@ -243,7 +243,7 @@ function CartItem({ item, onQuantityChange, onRemove }) {
   return (
     <article className="shop-cart-item">
       <div className={`shop-cart-thumb art-${item.color}`}>
-        <img src={`/products/${item.id}.png`} alt={item.name} />
+        <img src={`${import.meta.env.BASE_URL}products/${item.id}.png`} alt={item.name} />
       </div>
       <div className="shop-cart-product">
         <p>{item.category}</p>
