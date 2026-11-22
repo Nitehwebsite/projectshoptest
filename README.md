@@ -25,3 +25,4 @@ Set `VITE_API_URL=http://127.0.0.1:8000/api` in a root `.env` file to save check
 
 - [Entity-relationship diagram](./database/erd.md)
 - [SQL schema](./database/schema.sql)
+- [Draw.io ERD project](./database/shop-erd.drawio)

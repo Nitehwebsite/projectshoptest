@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" modified="2026-11-22T11:33:37Z" agent="Copilot" version="24.7.17" type="device">
+  <diagram id="shop-erd" name="Shop ERD">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="customers" value="&lt;b&gt;Customers&lt;/b&gt;&lt;hr&gt;PK  customer_id: INT&lt;br&gt;first_name: VARCHAR(80)&lt;br&gt;last_name: VARCHAR(80)&lt;br&gt;UK  email: VARCHAR(254)&lt;br&gt;phone: VARCHAR(32)&lt;br&gt;address: VARCHAR(255)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=8;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="260" width="240" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="categories" value="&lt;b&gt;Categories&lt;/b&gt;&lt;hr&gt;PK  category_id: INT&lt;br&gt;UK  name: VARCHAR(100)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=8;verticalAlign=top;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="240" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="products" value="&lt;b&gt;Products&lt;/b&gt;&lt;hr&gt;PK  product_id: INT&lt;br&gt;FK  category_id: INT&lt;br&gt;name: VARCHAR(150)&lt;br&gt;price: DECIMAL(10,2)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=8;verticalAlign=top;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="430" y="60" width="240" height="125" as="geometry"/>
+        </mxCell>
+        <mxCell id="orders" value="&lt;b&gt;Orders&lt;/b&gt;&lt;hr&gt;PK  order_id: INT&lt;br&gt;FK  customer_id: INT&lt;br&gt;order_status: VARCHAR(24)&lt;br&gt;shipping_method: VARCHAR(24)&lt;br&gt;shipping_cost: DECIMAL(10,2)&lt;br&gt;total_amount: DECIMAL(10,2)&lt;br&gt;created_at: DATETIME" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=8;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="430" y="260" width="240" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="order_items" value="&lt;b&gt;Order_Items&lt;/b&gt;&lt;hr&gt;PK  order_item_id: INT&lt;br&gt;FK  order_id: INT&lt;br&gt;FK  product_id: INT&lt;br&gt;quantity: INT UNSIGNED&lt;br&gt;unit_price: DECIMAL(10,2)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacing=8;verticalAlign=top;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="800" y="150" width="250" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="cat_prod" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="categories" target="products">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="cust_orders" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="customers" target="orders">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="order_items_order" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="orders" target="order_items">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="order_items_product" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;" edge="1" parent="1" source="products" target="order_items">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

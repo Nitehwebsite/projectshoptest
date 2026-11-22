@@ -44,3 +44,5 @@ erDiagram
 ```
 
 `unit_price` records the product price when the order was placed, so a later catalog price change does not alter a past order. `total_amount` stores the checkout total, including shipping.
+
+For editing in draw.io, open [shop-erd.drawio](./shop-erd.drawio).
