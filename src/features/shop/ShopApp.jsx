@@ -29,6 +29,13 @@ const emptyCustomer = {
   address: '',
 }
 
+const productIds = {
+  laptop: 1,
+  mouse: 2,
+  keyboard: 3,
+  monitor: 4,
+}
+
 function ShopApp() {
   const [page, setPage] = useState('shop')
   const [cart, setCart] = useState({})
@@ -71,14 +78,14 @@ function ShopApp() {
     setCustomer(current => ({ ...current, [name]: value }))
   }
 
-  function placeOrder(event) {
+  async function placeOrder(event) {
     event.preventDefault()
     if (cartItems.length === 0) {
       setPage('shop')
       return
     }
 
-    setOrder({
+    const fallbackOrder = {
       id: `ORD-${String(nextOrderNumber).padStart(4, '0')}`,
       customer: { ...customer },
       items: cartItems.map(item => ({ ...item })),
@@ -87,7 +94,40 @@ function ShopApp() {
       total: subtotal + shipping,
       shippingMethod,
       date: new Date().toISOString(),
-    })
+    }
+
+    const apiUrl = import.meta.env.VITE_API_URL
+    if (apiUrl) {
+      try {
+        const response = await fetch(`${apiUrl}/orders`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            customer,
+            shippingMethod,
+            shipping,
+            items: cartItems.map(item => ({
+              id: productIds[item.id],
+              quantity: item.quantity,
+              price: item.price,
+            })),
+          }),
+        })
+
+        if (!response.ok) {
+          const problem = await response.json().catch(() => null)
+          throw new Error(problem?.message || 'Unable to place the order.')
+        }
+
+        const savedOrder = await response.json()
+        fallbackOrder.id = savedOrder.id
+      } catch (error) {
+        setAnnouncement(error.message)
+        return
+      }
+    }
+
+    setOrder(fallbackOrder)
     setNextOrderNumber(number => number + 1)
     setCart({})
     setPage('confirmation')
