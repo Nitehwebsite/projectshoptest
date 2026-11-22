@@ -1,0 +1,38 @@
+export const products = [
+  {
+    id: 'laptop',
+    name: 'Laptop',
+    category: 'Computers',
+    description: 'Everyday performance, thoughtfully designed.',
+    price: 650,
+    icon: 'laptop',
+    color: 'blue',
+  },
+  {
+    id: 'mouse',
+    name: 'Mouse',
+    category: 'Accessories',
+    description: 'A comfortable, precise companion for your desk.',
+    price: 15,
+    icon: 'mouse',
+    color: 'peach',
+  },
+  {
+    id: 'keyboard',
+    name: 'Keyboard',
+    category: 'Accessories',
+    description: 'A clean, comfortable feel for every keystroke.',
+    price: 25,
+    icon: 'keyboard',
+    color: 'lavender',
+  },
+  {
+    id: 'monitor',
+    name: 'Monitor',
+    category: 'Displays',
+    description: 'A clear, spacious view for work and play.',
+    price: 120,
+    icon: 'monitor',
+    color: 'mint',
+  },
+]
